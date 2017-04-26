@@ -193,6 +193,16 @@ llvm_aarch64_static_libraries = [
     "libLLVMAArch64Disassembler",
 ]
 
+llvm_amdgpu_static_libraries = [
+    "libLLVMAMDGPUCodeGen",
+    "libLLVMAMDGPUInfo",
+    "libLLVMAMDGPUDesc",
+    "libLLVMAMDGPUAsmParser",
+    "libLLVMAMDGPUAsmPrinter",
+    "libLLVMAMDGPUUtils",
+]
+
+
 cc_library_shared {
     host_supported: true,
     name: "libLLVM",
@@ -278,6 +288,7 @@ cc_library_shared {
         },
         android: {
             export_include_dirs: ["device/include"],
+            whole_static_libs: llvm_amdgpu_static_libraries,
         },
         android_arm: {
             whole_static_libs: llvm_arm_static_libraries,
